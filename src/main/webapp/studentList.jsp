@@ -13,6 +13,7 @@
     <title>Title</title>
 </head>
 <body>
+<jsp:include page="/navigator.jsp"/>
 
 <%
     Object studentListResult = session.getAttribute("studentList");
