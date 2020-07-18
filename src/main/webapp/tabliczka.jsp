@@ -38,9 +38,9 @@
         rozmiarYint = 10;
     }
 
-    for (int i = 1; i < rozmiarXint; i++) {
+    for (int i = 1; i <= rozmiarXint; i++) {
         out.print("<tr>"); // wiersz
-        for (int j = 1; j < rozmiarYint; j++) {
+        for (int j = 1; j <= rozmiarYint; j++) {
             out.print("<td>");
             out.print(i*j);
             out.print("</td>");
