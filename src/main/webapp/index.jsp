@@ -18,6 +18,9 @@
     <li>
         <a href="tabliczka.jsp">Tabliczka mnozenia</a>
     </li>
+    <li>
+        <a href="studentForm.jsp">Formularz dodawania studenta</a>
+    </li>
 </ul>
 </body>
 </html>

@@ -6,6 +6,7 @@ import lombok.*;
 @Getter
 @Setter
 @ToString
+@Builder
 @EqualsAndHashCode(of = {"indexNumber"})
 @AllArgsConstructor
 @NoArgsConstructor

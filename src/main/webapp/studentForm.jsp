@@ -11,26 +11,27 @@
     <title>Student form</title>
 </head>
 <body>
-<form action="???" method="post">
+<form action="studentSubmitHandler.jsp" method="post">
     <label for="index">Index:</label>
     <input id="index" name="index" type="text"><br/>
 
-    <label for="firstName"></label>
+    <label for="firstName">First name:</label>
     <input id="firstName" name="firstName" type="text"><br/>
 
-    <label for="lastName"></label>
+    <label for="lastName">Last name:</label>
     <input id="lastName" name="lastName" type="text"><br/>
 
-    <label for="average"></label>
+    <label for="average">Average: </label>
     <input id="average" name="average" type="number" step="0.01"><br/>
 
-    <label for="gender"></label>
+    <label for="gender">Gender:</label>
     <select name="gender" id="gender">
         <option name="Male" value="MALE">Male</option>
         <option name="Female" value="FEMALE">Female</option>
     </select><br/>
 
-    <label for="active"></label>
+
+    <label for="active">Is Active:</label>
     <input id="active" name="active" type="checkbox"><br/>
 
     <input type="submit">
