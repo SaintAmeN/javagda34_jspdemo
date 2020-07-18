@@ -12,6 +12,11 @@
 </head>
 <body>
 
+<form action="tabliczka.jsp" method="get">
+    Rozmiar X: <input type="number" min="0" name="rozmiarX"><br/>
+    Rozmiar Y: <input type="number" min="0" name="rozmiarY"><br/>
+    <input type="submit">
+</form>
 
 <hr>
 <table>
