@@ -11,6 +11,7 @@
     <title>Tabliczka</title>
 </head>
 <body>
+<jsp:include page="/navigator.jsp"/>
 
 <form action="tabliczka.jsp" method="get">
     Rozmiar X: <input type="number" min="0" name="rozmiarX"><br/>

@@ -11,6 +11,7 @@
     <title>Index page</title>
 </head>
 <body>
+<jsp:include page="/navigator.jsp"/>
 
 </body>
 </html>

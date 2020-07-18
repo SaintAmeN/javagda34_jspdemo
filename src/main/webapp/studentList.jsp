@@ -23,6 +23,7 @@
     }else {
         studentList = new ArrayList<>();
     }
+
     out.print("<table>");
     out.print("<tr>" +
             "<th>Index</th>" +
@@ -31,6 +32,8 @@
             "<th>Average</th>" +
             "<th>Gender</th>" +
             "<th>Is active</th>" +
+            "<th>Edit</th>" +
+            "<th>Delete</th>" +
             "</tr>");
     for (int i = 0; i < studentList.size(); i++) {
         out.print("<tr>");
@@ -51,7 +54,14 @@
         out.print("</td>");
         out.print("<td>");
         out.println(studentList.get(i).isActive());
-        out.print("</td></tr>");
+        out.print("</td>");
+        out.print("<td>");
+        out.println("<a href=\"studentEditHandler.jsp?studentIndex="+studentList.get(i).getIndexNumber()+"\">Edit</a>");
+        out.print("</td>");
+        out.print("<td>");
+        out.println("<a href=\"studentDeleteHandler.jsp?studentIndex="+studentList.get(i).getIndexNumber()+"\">Delete</a>");
+        out.print("</td>" +
+                "</tr>");
     }
     out.print("</table>");
 %>

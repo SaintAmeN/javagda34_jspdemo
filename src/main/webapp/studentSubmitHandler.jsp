@@ -29,7 +29,7 @@
             .lastName(lastName)
             .average(Double.parseDouble(average))
             .gender(Gender.valueOf(gender))
-            .active(active.equalsIgnoreCase("on"))
+            .active(active != null && active.equalsIgnoreCase("on"))
             .build();
 
     Object studentListResult = session.getAttribute("studentList");
