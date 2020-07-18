@@ -22,7 +22,37 @@
     }else {
         studentList = new ArrayList<>();
     }
-    System.out.println(studentList);
+    out.print("<table>");
+    out.print("<tr>" +
+            "<th>Index</th>" +
+            "<th>First Name</th>" +
+            "<th>Last Name</th>" +
+            "<th>Average</th>" +
+            "<th>Gender</th>" +
+            "<th>Is active</th>" +
+            "</tr>");
+    for (int i = 0; i < studentList.size(); i++) {
+        out.print("<tr>");
+        out.print("<td>");
+        out.println(studentList.get(i).getIndexNumber());
+        out.print("</td>");
+        out.print("<td>");
+        out.println(studentList.get(i).getFirstName());
+        out.print("</td>");
+        out.print("<td>");
+        out.println(studentList.get(i).getLastName());
+        out.print("</td>");
+        out.print("<td>");
+        out.println(studentList.get(i).getAverage());
+        out.print("</td>");
+        out.print("<td>");
+        out.println(studentList.get(i).getGender());
+        out.print("</td>");
+        out.print("<td>");
+        out.println(studentList.get(i).isActive());
+        out.print("</td></tr>");
+    }
+    out.print("</table>");
 %>
 </body>
 </html>

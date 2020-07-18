@@ -29,7 +29,7 @@
             .lastName(lastName)
             .average(Double.parseDouble(average))
             .gender(Gender.valueOf(gender))
-            .active(Boolean.parseBoolean(active))
+            .active(active.equalsIgnoreCase("on"))
             .build();
 
     Object studentListResult = session.getAttribute("studentList");
@@ -41,7 +41,7 @@
     }
 
     studentList.add(student);
-    session.setAttribute("studentList", student);
+    session.setAttribute("studentList", studentList);
 
     response.sendRedirect("/studentList.jsp");
 %>

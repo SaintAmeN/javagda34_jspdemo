@@ -41,7 +41,7 @@
     }
 
     studentList.add(student);
-    session.setAttribute("studentList", student);
+    session.setAttribute("studentList", studentList);
 
     response.sendRedirect("/studentList.jsp");
 %>
