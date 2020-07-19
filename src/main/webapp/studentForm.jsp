@@ -12,7 +12,7 @@
 </head>
 <body>
 <jsp:include page="/navigator.jsp"/>
-<form action="studentSubmitHandler.jsp" method="post">
+<form action="/student" method="post">
     <label for="index">Index:</label>
     <input id="index" name="index" type="text"><br/>
 

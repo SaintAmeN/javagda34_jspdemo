@@ -31,11 +31,11 @@
     <c:forEach var="student" items="${requestScope.studentList}">
         <tr>
             <td>${student.indexNumber}</td>
-            <td><c:out value="${student.firstName}"/></td>
-            <td><c:out value="${student.lastName}"/></td>
-            <td><c:out value="${student.average}"/></td>
-            <td><c:out value="${student.gender}"/></td>
-            <td><c:out value="${student.active}"/></td>
+            <td>${student.firstName}</td>
+            <td>${student.lastName}</td>
+            <td>${student.average}</td>
+            <td>${student.gender}</td>
+            <td>${student.active}</td>
             <td>
                 <a href="/students/edit?studentIndex=<c:out value="${student.indexNumber}"/>">Edit</a>
             </td>

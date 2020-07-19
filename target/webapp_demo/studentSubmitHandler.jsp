@@ -16,34 +16,7 @@
 <body>
 
 <%
-    String index = request.getParameter("index");
-    String firstName = request.getParameter("firstName");
-    String lastName = request.getParameter("lastName");
-    String average = request.getParameter("average");
-    String gender = request.getParameter("gender");
-    String active = request.getParameter("active");
 
-    Student student = Student.builder()
-            .indexNumber(index)
-            .firstName(firstName)
-            .lastName(lastName)
-            .average(Double.parseDouble(average))
-            .gender(Gender.valueOf(gender))
-            .active(active != null && active.equalsIgnoreCase("on"))
-            .build();
-
-    Object studentListResult = session.getAttribute("student_list");
-    List<Student> studentList;
-    if(studentListResult instanceof List){
-         studentList = (List<Student>) studentListResult;
-    }else {
-        studentList = new ArrayList<>();
-    }
-
-    studentList.add(student);
-    session.setAttribute("student_list", studentList);
-
-    response.sendRedirect("/studentList.jsp");
 %>
 </body>
 </html>
