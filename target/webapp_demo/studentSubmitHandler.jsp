@@ -32,7 +32,7 @@
             .active(active != null && active.equalsIgnoreCase("on"))
             .build();
 
-    Object studentListResult = session.getAttribute("studentList");
+    Object studentListResult = session.getAttribute("student_list");
     List<Student> studentList;
     if(studentListResult instanceof List){
          studentList = (List<Student>) studentListResult;
@@ -41,7 +41,7 @@
     }
 
     studentList.add(student);
-    session.setAttribute("studentList", studentList);
+    session.setAttribute("student_list", studentList);
 
     response.sendRedirect("/studentList.jsp");
 %>

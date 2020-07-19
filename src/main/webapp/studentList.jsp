@@ -30,27 +30,20 @@
     </tr>
     <c:forEach var="student" items="${requestScope.studentList}">
         <tr>
-            <td><c:out value="${student.indexNumber}"/> </td>
-            <td><c:out value="${student.firstName}"/> </td>
-            <td><c:out value="${student.lastName}"/> </td>
-            <td><c:out value="${student.average}"/> </td>
-            <td><c:out value="${student.gender}"/> </td>
-            <td><c:out value="${student.active}"/> </td>
-            <td></td>
-            <td></td>
+            <td>${student.indexNumber}</td>
+            <td>${student.firstName}</td>
+            <td>${student.lastName}</td>
+            <td>${student.average}</td>
+            <td>${student.gender}</td>
+            <td>${student.active}</td>
+            <td>
+                <a href="/students/edit?studentIndex=<c:out value="${student.indexNumber}"/>">Edit</a>
+            </td>
+            <td>
+                <a href="/students/delete?studentIndex=<c:out value="${student.indexNumber}"/>">Delete</a>
+            </td>
         </tr>
     </c:forEach>
 </table>
-
-<%
-        out.println("<a href=\"studentEditHandler.jsp?studentIndex="+studentList.get(i).getIndexNumber()+"\">Edit</a>");
-        out.print("</td>");
-        out.print("<td>");
-        out.println("<a href=\"studentDeleteHandler.jsp?studentIndex="+studentList.get(i).getIndexNumber()+"\">Delete</a>");
-        out.print("</td>" +
-                "</tr>");
-    }
-    out.print("</table>");
-%>
 </body>
 </html>
