@@ -7,7 +7,9 @@
   Time: 1:53 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
 <html>
 <head>
     <title>Title</title>
@@ -15,47 +17,32 @@
 <body>
 <jsp:include page="/navigator.jsp"/>
 
-<%
-    Object studentListResult = session.getAttribute("studentList");
-    List<Student> studentList;
-    if(studentListResult instanceof List){
-        studentList = (List<Student>) studentListResult;
-    }else {
-        studentList = new ArrayList<>();
-    }
+<table>
+    <tr>
+        <th>Index</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Average</th>
+        <th>Gender</th>
+        <th>Is Active</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <c:forEach var="student" items="${requestScope.studentList}">
+        <tr>
+            <td><c:out value="${student.indexNumber}"/> </td>
+            <td><c:out value="${student.firstName}"/> </td>
+            <td><c:out value="${student.lastName}"/> </td>
+            <td><c:out value="${student.average}"/> </td>
+            <td><c:out value="${student.gender}"/> </td>
+            <td><c:out value="${student.active}"/> </td>
+            <td></td>
+            <td></td>
+        </tr>
+    </c:forEach>
+</table>
 
-    out.print("<table>");
-    out.print("<tr>" +
-            "<th>Index</th>" +
-            "<th>First Name</th>" +
-            "<th>Last Name</th>" +
-            "<th>Average</th>" +
-            "<th>Gender</th>" +
-            "<th>Is active</th>" +
-            "<th>Edit</th>" +
-            "<th>Delete</th>" +
-            "</tr>");
-    for (int i = 0; i < studentList.size(); i++) {
-        out.print("<tr>");
-        out.print("<td>");
-        out.println(studentList.get(i).getIndexNumber());
-        out.print("</td>");
-        out.print("<td>");
-        out.println(studentList.get(i).getFirstName());
-        out.print("</td>");
-        out.print("<td>");
-        out.println(studentList.get(i).getLastName());
-        out.print("</td>");
-        out.print("<td>");
-        out.println(studentList.get(i).getAverage());
-        out.print("</td>");
-        out.print("<td>");
-        out.println(studentList.get(i).getGender());
-        out.print("</td>");
-        out.print("<td>");
-        out.println(studentList.get(i).isActive());
-        out.print("</td>");
-        out.print("<td>");
+<%
         out.println("<a href=\"studentEditHandler.jsp?studentIndex="+studentList.get(i).getIndexNumber()+"\">Edit</a>");
         out.print("</td>");
         out.print("<td>");

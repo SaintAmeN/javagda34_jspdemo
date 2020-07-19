@@ -15,26 +15,21 @@
 <body>
 <jsp:include page="/navigator.jsp"/>
 
-<%
-    Object studentListResult = session.getAttribute("studentList");
-    List<Student> studentList;
-    if(studentListResult instanceof List){
-        studentList = (List<Student>) studentListResult;
-    }else {
-        studentList = new ArrayList<>();
-    }
+<table>
+    <tr>
+        <th>Index</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Average</th>
+        <th>Gender</th>
+        <th>Is Active</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
 
-    out.print("<table>");
-    out.print("<tr>" +
-            "<th>Index</th>" +
-            "<th>First Name</th>" +
-            "<th>Last Name</th>" +
-            "<th>Average</th>" +
-            "<th>Gender</th>" +
-            "<th>Is active</th>" +
-            "<th>Edit</th>" +
-            "<th>Delete</th>" +
-            "</tr>");
+</table>
+
+<%
     for (int i = 0; i < studentList.size(); i++) {
         out.print("<tr>");
         out.print("<td>");
