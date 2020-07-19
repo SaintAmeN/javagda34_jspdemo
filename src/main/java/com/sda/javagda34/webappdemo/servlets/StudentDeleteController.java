@@ -20,7 +20,7 @@ public class StudentDeleteController extends HttpServlet {
         String studentIndex = req.getParameter("studentIndex");
 
         // pobranie obiektu (listy studentów) z sesji.
-        Object studentListResult = req.getSession().getAttribute("studentList");
+        Object studentListResult = req.getSession().getAttribute("student_list");
         // ładujemy do Object, bo chcemy sprawdzić czy jest tam COKOLWIEK (!= null)
         List<Student> studentList;
         if(studentListResult instanceof List){
