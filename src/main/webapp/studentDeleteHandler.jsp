@@ -14,32 +14,6 @@
 </head>
 <body>
 <%
-    // localhost:8080/studentDeleteHandler.jsp?studentIndex=5
-    // usunięcie studenta z numerem indeksu 5
-    String studentIndex = request.getParameter("studentIndex");
-
-
-    // pobranie obiektu (listy studentów) z sesji.
-    Object studentListResult = session.getAttribute("studentList");
-    // ładujemy do Object, bo chcemy sprawdzić czy jest tam COKOLWIEK (!= null)
-    List<Student> studentList;
-    if(studentListResult instanceof List){
-        studentList = (List<Student>) studentListResult;
-    }else {
-        studentList = new ArrayList<>();
-    }
-    // pętla, wyszukiwanie po numerze indeksu
-    for (int i = 0; i < studentList.size(); i++) {
-        if(studentList.get(i).getIndexNumber().equalsIgnoreCase(studentIndex)){
-            // usuwanie studenta
-            studentList.remove(studentList.get(i));
-            break;
-        }
-    }
-    // ponowny zapis kolekcji (tym razem bez usuniętego studenta)
-    session.setAttribute("studentList", studentList);
-
-    response.sendRedirect("/studentList.jsp");
 %>
 </body>
 </html>
