@@ -1,6 +1,6 @@
 package com.sda.javagda34.webappdemo.model;
 
 public enum Gender {
-    MALE,
-    FEMALE
+    MALE,           // 0
+    FEMALE          // 1
 }

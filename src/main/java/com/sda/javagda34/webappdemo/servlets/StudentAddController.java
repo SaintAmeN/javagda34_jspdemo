@@ -1,5 +1,6 @@
 package com.sda.javagda34.webappdemo.servlets;
 
+import com.sda.javagda34.webappdemo.database.EntityDao;
 import com.sda.javagda34.webappdemo.model.Gender;
 import com.sda.javagda34.webappdemo.model.Student;
 
@@ -14,6 +15,8 @@ import java.util.List;
 
 @WebServlet("/student")
 public class StudentAddController extends HttpServlet {
+    private final EntityDao<Student> studentEntityDao = new EntityDao<>();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // tutaj ładujemy formularz i wyświetlamy go użytkownikowi
@@ -39,16 +42,18 @@ public class StudentAddController extends HttpServlet {
                 .active(active != null && active.equalsIgnoreCase("on"))
                 .build();
 
-        Object studentListObject = req.getSession().getAttribute("student_list");
-        List<Student> studentList;
-        if (studentListObject instanceof List) {
-            studentList = (List<Student>) studentListObject;
-        } else {
-            studentList = new ArrayList<>();
-        }
+//        Object studentListObject = req.getSession().getAttribute("student_list");
+//        List<Student> studentList;
+//        if (studentListObject instanceof List) {
+//            studentList = (List<Student>) studentListObject;
+//        } else {
+//            studentList = new ArrayList<>();
+//        }
 
-        studentList.add(student);
-        req.getSession().setAttribute("student_list", studentList);
+//        studentList.add(student);
+//        req.getSession().setAttribute("student_list", studentList);
+        studentEntityDao.saveOrUpdate(student);
+
         resp.sendRedirect("/students");
     }
 }
