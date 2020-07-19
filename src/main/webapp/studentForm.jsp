@@ -14,8 +14,8 @@
 </head>
 <body>
 <jsp:include page="/navigator.jsp"/>
-<form action="/student" method="post">
-    <input contenteditable="false" type="hidden" value="${requestScope.student_to_edit.indexNumber}">
+<form action="${requestScope.student_to_edit==null ?'/student' : '/students/edit'}" method="post">
+    <input contenteditable="false" type="hidden" name="studentIndex" value="${requestScope.student_to_edit.indexNumber}">
 
     <label for="index">Index:</label>
     <input id="index" name="index" value="${requestScope.student_to_edit.indexNumber}" type="text"><br/>
@@ -31,13 +31,18 @@
 
     <label for="gender">Gender:</label>
     <select name="gender" id="gender">
-        <option name="Male" value="MALE" <c:if test="${requestScope.student_to_edit.gender == 'MALE'}">selected</c:if>>Male</option>
-        <option name="Female" value="FEMALE" <c:if test="${requestScope.student_to_edit.gender == 'FEMALE'}">selected</c:if> >Female</option>
+        <option name="Male" value="MALE" <c:if test="${requestScope.student_to_edit.gender == 'MALE'}">selected</c:if>>
+            Male
+        </option>
+        <option name="Female" value="FEMALE"
+                <c:if test="${requestScope.student_to_edit.gender == 'FEMALE'}">selected</c:if> >Female
+        </option>
     </select><br/>
 
 
     <label for="active">Is Active:</label>
-    <input id="active" name="active" <c:if test="${requestScope.student_to_edit.active}">checked</c:if> type="checkbox"><br/>
+    <input id="active" name="active"
+           <c:if test="${requestScope.student_to_edit.active}">checked</c:if> type="checkbox"><br/>
 
     <input type="submit">
 </form>

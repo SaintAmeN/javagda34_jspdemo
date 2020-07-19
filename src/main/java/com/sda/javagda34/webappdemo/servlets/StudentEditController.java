@@ -45,7 +45,7 @@ public class StudentEditController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        String index = req.getParameter("index");
+        String index = req.getParameter("studentIndex");
         String firstName = req.getParameter("firstName");
         String lastName = req.getParameter("lastName");
         String average = req.getParameter("average");
@@ -69,7 +69,15 @@ public class StudentEditController extends HttpServlet {
             studentList = new ArrayList<>();
         }
 
-        studentList.add(student);
+
+        for (int i = 0; i < studentList.size(); i++) {
+            if(studentList.get(i).getIndexNumber().equalsIgnoreCase(index)){
+                // usuwanie starego studenta
+                studentList.remove(studentList.get(i));
+                break;
+            }
+        }
+        studentList.add(student); // umieszczenie nowego i zapis w bazie
         req.getSession().setAttribute("student_list", studentList);
         resp.sendRedirect("/students");
     }
