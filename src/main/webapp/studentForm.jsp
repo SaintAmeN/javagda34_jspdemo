@@ -18,7 +18,12 @@
     <input contenteditable="false" type="hidden" name="studentIndex" value="${requestScope.student_to_edit.indexNumber}">
 
     <label for="index">Index:</label>
-    <input id="index" name="index" value="${requestScope.student_to_edit.indexNumber}" type="text"><br/>
+    <input id="index" name="index"
+           <c:if test="${requestScope.student_to_edit!=null}">
+            readonly
+            </c:if>
+           value="${requestScope.student_to_edit.indexNumber}"
+           type="text"><br/>
 
     <label for="firstName">First name:</label>
     <input id="firstName" name="firstName" value="${requestScope.student_to_edit.firstName}" type="text"><br/>
