@@ -15,13 +15,10 @@
 <body>
 <jsp:include page="/navigator.jsp"/>
 <form action="${requestScope.student_to_edit==null ?'/student' : '/students/edit'}" method="post">
-    <input contenteditable="false" type="hidden" name="studentIndex" value="${requestScope.student_to_edit.indexNumber}">
+    <input contenteditable="false" type="hidden" name="id" value="${requestScope.student_to_edit.id}">
 
-    <label for="index">Index:</label>
-    <input id="index" name="index"
-           <c:if test="${requestScope.student_to_edit!=null}">
-            readonly
-            </c:if>
+    <label for="studentIndex">Index:</label>
+    <input id="studentIndex" name="studentIndex"
            value="${requestScope.student_to_edit.indexNumber}"
            type="text"><br/>
 

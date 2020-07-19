@@ -10,8 +10,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 @WebServlet("/student")
 public class StudentAddController extends HttpServlet {
@@ -42,16 +40,6 @@ public class StudentAddController extends HttpServlet {
                 .active(active != null && active.equalsIgnoreCase("on"))
                 .build();
 
-//        Object studentListObject = req.getSession().getAttribute("student_list");
-//        List<Student> studentList;
-//        if (studentListObject instanceof List) {
-//            studentList = (List<Student>) studentListObject;
-//        } else {
-//            studentList = new ArrayList<>();
-//        }
-
-//        studentList.add(student);
-//        req.getSession().setAttribute("student_list", studentList);
         studentEntityDao.saveOrUpdate(student);
 
         resp.sendRedirect("/students");

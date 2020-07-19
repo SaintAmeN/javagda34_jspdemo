@@ -1,5 +1,6 @@
 package com.sda.javagda34.webappdemo.servlets;
 
+import com.sda.javagda34.webappdemo.database.EntityDao;
 import com.sda.javagda34.webappdemo.model.Student;
 
 import javax.servlet.ServletException;
@@ -10,36 +11,26 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @WebServlet("/students/delete")
 public class StudentDeleteController extends HttpServlet {
+    private final EntityDao<Student> studentEntityDao = new EntityDao<>();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        // localhost:8080/studentDeleteHandler.jsp?studentIndex=5
+        // localhost:8080/studentDeleteHandler.jsp?studentId=5
         // usunięcie studenta z numerem indeksu 5
-        String studentIndex = req.getParameter("studentIndex");
+        String studentId = req.getParameter("studentId");
 
-        // pobranie obiektu (listy studentów) z sesji.
-        Object studentListResult = req.getSession().getAttribute("student_list");
-        // ładujemy do Object, bo chcemy sprawdzić czy jest tam COKOLWIEK (!= null)
-        List<Student> studentList;
-        if(studentListResult instanceof List){
-            studentList = (List<Student>) studentListResult;
-        }else {
-            studentList = new ArrayList<>();
+        Optional<Student> studentOptional = studentEntityDao.findById(Long.parseLong(studentId), Student.class);
+        if(studentOptional.isPresent()) {
+            Student student = studentOptional.get();
+            studentEntityDao.delete(student);
+            System.out.println("Success!");
+        }else{
+            System.out.println("Does not exist!");
         }
-
-        // pętla, wyszukiwanie po numerze indeksu
-        for (int i = 0; i < studentList.size(); i++) {
-            if(studentList.get(i).getIndexNumber().equalsIgnoreCase(studentIndex)){
-                // usuwanie studenta
-                studentList.remove(studentList.get(i));
-                break;
-            }
-        }
-
-        // ponowny zapis kolekcji (tym razem bez usuniętego studenta)
-        req.getSession().setAttribute("student_list", studentList);
 
         resp.sendRedirect("/students");
 

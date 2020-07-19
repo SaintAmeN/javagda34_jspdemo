@@ -37,10 +37,10 @@
             <td>${student.gender}</td>
             <td>${student.active}</td>
             <td>
-                <a href="/students/edit?studentIndex=<c:out value="${student.indexNumber}"/>">Edit</a>
+                <a href="/students/edit?studentId=<c:out value="${student.id}"/>">Edit</a>
             </td>
             <td>
-                <a href="/students/delete?studentIndex=<c:out value="${student.indexNumber}"/>">Delete</a>
+                <a href="/students/delete?studentId=<c:out value="${student.id}"/>">Delete</a>
             </td>
         </tr>
     </c:forEach>

@@ -1,5 +1,6 @@
 package com.sda.javagda34.webappdemo.servlets;
 
+import com.sda.javagda34.webappdemo.database.EntityDao;
 import com.sda.javagda34.webappdemo.model.Gender;
 import com.sda.javagda34.webappdemo.model.Student;
 
@@ -11,30 +12,19 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @WebServlet("/students/edit")
 public class StudentEditController extends HttpServlet {
+    private final EntityDao<Student> studentEntityDao = new EntityDao<>();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        String studentIndex = req.getParameter("studentIndex");
-        Object studentListObject = req.getSession().getAttribute("student_list");
-        List<Student> studentList;
-        if (studentListObject instanceof List) {
-            studentList = (List<Student>) studentListObject;
-        } else {
-            studentList = new ArrayList<>();
-        }
+        String studentId = req.getParameter("studentId");
+        Optional<Student> studentOptional = studentEntityDao.findById(Long.parseLong(studentId), Student.class);
 
-        Student student = null;
-        // pętla, wyszukiwanie po numerze indeksu
-        for (int i = 0; i < studentList.size(); i++) {
-            if(studentList.get(i).getIndexNumber().equalsIgnoreCase(studentIndex)){
-                student = studentList.get(i);
-                break;
-            }
-        }
-
-        if(student != null) {
+        if (studentOptional.isPresent()) {
+            Student student = studentOptional.get();
             req.setAttribute("student_to_edit", student);
 
             // tutaj ładujemy formularz i wyświetlamy go użytkownikowi
@@ -44,6 +34,7 @@ public class StudentEditController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Long id = Long.valueOf(req.getParameter("id"));
         String index = req.getParameter("studentIndex");
         String firstName = req.getParameter("firstName");
         String lastName = req.getParameter("lastName");
@@ -52,6 +43,7 @@ public class StudentEditController extends HttpServlet {
         String active = req.getParameter("active");
 
         Student student = Student.builder()
+                .id(id)
                 .indexNumber(index)
                 .firstName(firstName)
                 .lastName(lastName)
@@ -60,24 +52,8 @@ public class StudentEditController extends HttpServlet {
                 .active(active != null && active.equalsIgnoreCase("on"))
                 .build();
 
-        Object studentListObject = req.getSession().getAttribute("student_list");
-        List<Student> studentList;
-        if (studentListObject instanceof List) {
-            studentList = (List<Student>) studentListObject;
-        } else {
-            studentList = new ArrayList<>();
-        }
+        studentEntityDao.saveOrUpdate(student);
 
-
-        for (int i = 0; i < studentList.size(); i++) {
-            if(studentList.get(i).getIndexNumber().equalsIgnoreCase(index)){
-                // usuwanie starego studenta
-                studentList.remove(studentList.get(i));
-                break;
-            }
-        }
-        studentList.add(student); // umieszczenie nowego i zapis w bazie
-        req.getSession().setAttribute("student_list", studentList);
         resp.sendRedirect("/students");
     }
 }
