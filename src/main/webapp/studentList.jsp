@@ -37,10 +37,10 @@
             <td>${student.gender}</td>
             <td>${student.active}</td>
             <td>
-                <a href="/students/edit?studentId=<c:out value="${student.id}"/>">Edit</a>
+                <a href="${pageContext.request.contextPath}/students/edit?studentId=<c:out value="${student.id}"/>">Edit</a>
             </td>
             <td>
-                <a href="/students/delete?studentId=<c:out value="${student.id}"/>">Delete</a>
+                <a href="${pageContext.request.contextPath}/students/delete?studentId=<c:out value="${student.id}"/>">Delete</a>
             </td>
         </tr>
     </c:forEach>

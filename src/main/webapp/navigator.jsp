@@ -1,15 +1,17 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page isELIgnored="false" %>
 <ul>
     <li>
-        <a href="/">Home</a>
+        <a href="${pageContext.request.contextPath}/">Home</a>
     </li>
     <li>
-        <a href="tabliczka.jsp">Tabliczka mnozenia</a>
+        <a href="${pageContext.request.contextPath}/tabliczka.jsp">Tabliczka mnozenia</a>
     </li>
     <li>
-        <a href="/student">Formularz dodawania studenta</a>
+        <a href="${pageContext.request.contextPath}/student">Formularz dodawania studenta</a>
     </li>
     <li>
-        <a href="/students">Lista studentów</a>
+        <a href="${pageContext.request.contextPath}/students">Lista studentów</a>
     </li>
 </ul>
