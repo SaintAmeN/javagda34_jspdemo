@@ -54,6 +54,6 @@ public class StudentEditController extends HttpServlet {
 
         studentEntityDao.saveOrUpdate(student);
 
-        resp.sendRedirect("/students");
+        resp.sendRedirect(req.getContextPath() + "/students");
     }
 }
