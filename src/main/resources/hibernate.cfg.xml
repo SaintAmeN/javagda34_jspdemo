@@ -5,11 +5,11 @@
 <hibernate-configuration>
     <session-factory>
         <property name="connection.url">
-            jdbc:mysql://localhost:3306/javagda34_hibernate_students?serverTimezone=Europe/Warsaw&amp;createDatabaseIfNotExist=true
+            jdbc:mysql://46.41.140.14:3306/javagda34_hibernate_students?serverTimezone=Europe/Warsaw&amp;createDatabaseIfNotExist=true
         </property>
         <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.username">user</property>
-        <property name="connection.password">user</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">root</property>
 
         <!--DB schema will be updated if needed -->
         <!--Hibernate model to data definition language-->
