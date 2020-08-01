@@ -2,6 +2,7 @@ package com.sda.javagda34.webappdemo.servlets;
 
 import com.sda.javagda34.webappdemo.model.Grade;
 import com.sda.javagda34.webappdemo.model.GradeSubject;
+import com.sda.javagda34.webappdemo.model.Student;
 import com.sda.javagda34.webappdemo.services.GradeService;
 import com.sda.javagda34.webappdemo.services.StudentService;
 
@@ -19,10 +20,24 @@ import java.util.Optional;
 public class GradeAddController extends HttpServlet {
     private final GradeService gradeService = new GradeService();
     private final StudentService studentService = new StudentService();
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String studentId = req.getParameter("studentId");
+        Optional<Student> studentOptional = null;
+        if (studentId != null) {
+            studentOptional = studentService.findById(studentId);
+        }
+        if (studentId == null || !studentOptional.isPresent()) {
+            // przypadek w którym studenta nie ma/nie został podany
+            req.setAttribute("studentList", studentService.findAll());
+        } else {
+            // przypadek, kiedy jesteśmy na stronie "szczegółów" studenta i dodajemy mu ocenę
+            // student jest poprawny i został przekazany (identyfikator) z innej podstrony
+            req.setAttribute("student", studentOptional.get());
+        }
+
         req.setAttribute("gradeSubjectList", new ArrayList<>(Arrays.asList(GradeSubject.values())));
-        req.setAttribute("studentList", studentService.findAll());
 
         req.getRequestDispatcher("/gradeForm.jsp").forward(req, resp);
     }
@@ -31,7 +46,7 @@ public class GradeAddController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Optional<Grade> gradeOptional = gradeService.processFormParameters(req);
 
-        if(gradeOptional.isPresent()){
+        if (gradeOptional.isPresent()) {
             // dodaj do bazy
             gradeService.save(gradeOptional.get());
             // redirect na studenta

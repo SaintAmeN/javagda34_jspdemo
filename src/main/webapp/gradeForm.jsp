@@ -16,12 +16,20 @@
 <jsp:include page="/navigator.jsp"/>
 
 <form action='${pageContext.request.contextPath}/grade/add' method="post">
-    <label for="studentId">Student id:</label>
-    <select id="studentId" name="studentId">
-        <c:forEach var="student" items="${requestScope.studentList}">
-            <option value="${student.id}" name="${student.id}" >${student.firstName}</option>
-        </c:forEach>
-    </select><br/>
+    <c:if test="${requestScope.student != null}">
+        <label for="studentId">Student id: ${requestScope.student.id}</label>
+        <input type="hidden" readonly value="${requestScope.student.id}" name="studentId">
+        <br/>
+    </c:if>
+
+    <c:if test="${requestScope.student == null}">
+        <label for="studentId">Student id:</label>
+        <select id="studentId" name="studentId">
+            <c:forEach var="student" items="${requestScope.studentList}">
+                <option value="${student.id}" name="${student.id}" >${student.firstName}</option>
+            </c:forEach>
+        </select><br/>
+    </c:if>
 
     <label for="gradeValue">Grade value:</label>
     <input id="gradeValue" name="gradeValue" type="number" step="0.5" min="2" max="6" value="5"><br/>

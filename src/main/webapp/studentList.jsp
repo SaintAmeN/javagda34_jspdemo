@@ -22,9 +22,6 @@
         <th>Index</th>
         <th>First Name</th>
         <th>Last Name</th>
-        <th>Average</th>
-        <th>Gender</th>
-        <th>Is Active</th>
         <th>Edit</th>
         <th>Delete</th>
         <th>Details</th>
@@ -34,9 +31,6 @@
             <td>${student.indexNumber}</td>
             <td>${student.firstName}</td>
             <td>${student.lastName}</td>
-            <td>${student.average}</td>
-            <td>${student.gender}</td>
-            <td>${student.active}</td>
             <td>
                 <a href="${pageContext.request.contextPath}/students/edit?studentId=<c:out value="${student.id}"/>">Edit</a>
             </td>

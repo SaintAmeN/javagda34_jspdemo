@@ -18,6 +18,7 @@ public class StudentAddController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // tutaj ładujemy formularz i wyświetlamy go użytkownikowi
+
         req.getRequestDispatcher("/studentForm.jsp").forward(req, resp);
     }
 
@@ -26,7 +27,7 @@ public class StudentAddController extends HttpServlet {
         String index = req.getParameter("studentIndex");
         String firstName = req.getParameter("firstName");
         String lastName = req.getParameter("lastName");
-        String average = req.getParameter("average");
+//        String average = req.getParameter("average");
         String gender = req.getParameter("gender");
         String active = req.getParameter("active");
 
@@ -34,7 +35,7 @@ public class StudentAddController extends HttpServlet {
                 .indexNumber(index)
                 .firstName(firstName)
                 .lastName(lastName)
-                .average(Double.parseDouble(average))
+//                .average(Double.parseDouble(average))
                 .gender(Gender.valueOf(gender))
                 .active(active != null && active.equalsIgnoreCase("on"))
                 .build();

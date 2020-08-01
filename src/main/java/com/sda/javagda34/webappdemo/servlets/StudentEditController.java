@@ -38,7 +38,7 @@ public class StudentEditController extends HttpServlet {
         String index = req.getParameter("studentIndex");
         String firstName = req.getParameter("firstName");
         String lastName = req.getParameter("lastName");
-        String average = req.getParameter("average");
+//        String average = req.getParameter("average");
         String gender = req.getParameter("gender");
         String active = req.getParameter("active");
 
@@ -47,7 +47,7 @@ public class StudentEditController extends HttpServlet {
                 .indexNumber(index)
                 .firstName(firstName)
                 .lastName(lastName)
-                .average(Double.parseDouble(average))
+//                .average(Double.parseDouble(average))
                 .gender(Gender.valueOf(gender))
                 .active(active != null && active.equalsIgnoreCase("on"))
                 .build();
