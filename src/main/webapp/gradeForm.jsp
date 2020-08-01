@@ -17,7 +17,11 @@
 
 <form action='${pageContext.request.contextPath}/grade/add' method="post">
     <label for="studentId">Student id:</label>
-    <input id="studentId" name="studentId" type="number"><br/>
+    <select id="studentId" name="studentId">
+        <c:forEach var="student" items="${requestScope.studentList}">
+            <option value="${student.id}" name="${student.id}" >${student.firstName}</option>
+        </c:forEach>
+    </select><br/>
 
     <label for="gradeValue">Grade value:</label>
     <input id="gradeValue" name="gradeValue" type="number" step="0.5" min="2" max="6" value="5"><br/>

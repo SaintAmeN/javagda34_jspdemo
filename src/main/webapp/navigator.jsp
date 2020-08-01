@@ -14,4 +14,7 @@
     <li>
         <a href="${pageContext.request.contextPath}/students">Lista studentów</a>
     </li>
+    <li>
+        <a href="${pageContext.request.contextPath}/grade/add">Dodawanie oceny</a>
+    </li>
 </ul>
