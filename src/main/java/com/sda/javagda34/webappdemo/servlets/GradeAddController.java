@@ -48,12 +48,13 @@ public class GradeAddController extends HttpServlet {
 
         if (gradeOptional.isPresent()) {
             // dodaj do bazy
-            gradeService.save(gradeOptional.get());
-            // redirect na studenta
-            // todo: po poprawnym dodaniu przekieruj na stronę ocen studenta
-            resp.sendRedirect(req.getContextPath() + "/student/list");
+            Grade grade = gradeOptional.get();
+            gradeService.save(grade);
+
+            // redirect na details studenta
+            resp.sendRedirect(req.getContextPath() + "/student/details?studentId=" + grade.getStudent().getId());
         } else {
-            resp.sendRedirect(req.getContextPath() + "/student/list");
+            resp.sendRedirect(req.getContextPath() + "/students");
         }
     }
 }

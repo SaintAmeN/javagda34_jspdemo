@@ -61,6 +61,7 @@
                 <th>Id</th>
                 <th>Value</th>
                 <th>Subject</th>
+                <th>Date added</th>
                 <th></th>
                 <th></th>
             </tr>
@@ -69,8 +70,17 @@
                     <td>${grade.id}</td>
                     <td>${grade.value}</td>
                     <td>${grade.subject}</td>
-                    <td>Edit</td>
-                    <td>Delete</td>
+                    <td>${grade.dateAdded}</td>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/grade/edit?gradeId=${grade.id}" }>
+                            Edit
+                        </a>
+                    </td>
+                    <td>
+                        <a href="${pageContext.request.contextPath}/grade/delete?gradeId=${grade.id}" }>
+                            Delete
+                        </a>
+                    </td>
                 </tr>
             </c:forEach>
         </table>

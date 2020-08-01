@@ -51,4 +51,19 @@ public class GradeService {
         log.info("Saving: " + grade);
         gradeEntityDao.saveOrUpdate(grade);
     }
+
+    public void deleteGrade(String gradeId) {
+        // zmiana string - > long
+        Long gradeIdentifier = Long.parseLong(gradeId);
+
+        // szukanie oceny w bazie danych (możemy usunąć tylko obiekt który istnieje)
+        Optional<Grade> optionalGrade = gradeEntityDao.findById(gradeIdentifier, Grade.class);
+        if(optionalGrade.isPresent()){ // upewniamy się że obiekt został odnaleziony
+            Grade grade = optionalGrade.get(); // wyciągamy obiekt z optional
+
+            gradeEntityDao.delete(grade); // usuwamy obiekt
+        }else{
+            log.error("Couldn't find grade."); // jeśli nie znajdziemy obiektu, to wypisujemy log
+        }
+    }
 }
