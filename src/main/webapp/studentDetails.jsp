@@ -72,7 +72,7 @@
                     <td>${grade.subject}</td>
                     <td>${grade.dateAdded}</td>
                     <td>
-                        <a href="${pageContext.request.contextPath}/grade/edit?gradeId=${grade.id}" }>
+                        <a href="${pageContext.request.contextPath}/grade/edit?gradeId=${grade.id}&studentId=${requestScope.student.id}" }>
                             Edit
                         </a>
                     </td>

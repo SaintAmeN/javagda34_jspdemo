@@ -34,7 +34,7 @@ public class GradeAddController extends HttpServlet {
         } else {
             // przypadek, kiedy jesteśmy na stronie "szczegółów" studenta i dodajemy mu ocenę
             // student jest poprawny i został przekazany (identyfikator) z innej podstrony
-            req.setAttribute("student", studentOptional.get());
+            req.setAttribute("studentId", studentOptional.get().getId());
         }
 
         req.setAttribute("gradeSubjectList", new ArrayList<>(Arrays.asList(GradeSubject.values())));

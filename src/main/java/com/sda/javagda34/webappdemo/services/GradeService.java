@@ -66,4 +66,20 @@ public class GradeService {
             log.error("Couldn't find grade."); // jeśli nie znajdziemy obiektu, to wypisujemy log
         }
     }
+
+    public Optional<Grade> findById(String gradeId) {
+        return gradeEntityDao.findById(Long.parseLong(gradeId), Grade.class);
+    }
+
+    public void updateGrade(String gradeId, Grade newValues) {
+        Optional<Grade> originalGradeToEdit = findById(gradeId);
+        if (originalGradeToEdit.isPresent()) {
+            Grade original = originalGradeToEdit.get();
+
+            original.setSubject(newValues.getSubject());
+            original.setValue(newValues.getValue());
+
+            save(original);
+        }
+    }
 }
