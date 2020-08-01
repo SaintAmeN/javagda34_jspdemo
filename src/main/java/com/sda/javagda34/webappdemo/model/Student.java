@@ -2,6 +2,7 @@ package com.sda.javagda34.webappdemo.model;
 
 import com.sda.javagda34.webappdemo.model.Gender;
 import lombok.*;
+import org.hibernate.annotations.Formula;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -27,6 +28,11 @@ public class Student {
     private String indexNumber; //unikalny
     private String firstName;
     private String lastName;
+
+    // SELECT id, active, average, firstName, gender, indexNumber, lastName, (select avg(g.value) from Grade g where g.student_id=s.id) as average2 FROM javagda34_hibernate_students.Student s;
+    // pole adnotowane przez formula przestaje być kolumną
+    // musi być wielką literą (Double), żeby wartość mogła być nullem (dzieje się tak w przypadku braku ocen)
+    @Formula(value = "(select avg(g.value) from Grade g where g.student_id=id)")
     private Double average;
 
     @Enumerated(EnumType.STRING)

@@ -27,6 +27,7 @@
         <th>Is Active</th>
         <th>Edit</th>
         <th>Delete</th>
+        <th>Details</th>
     </tr>
     <c:forEach var="student" items="${requestScope.studentList}">
         <tr>
@@ -41,6 +42,9 @@
             </td>
             <td>
                 <a href="${pageContext.request.contextPath}/students/delete?studentId=<c:out value="${student.id}"/>">Delete</a>
+            </td>
+            <td>
+                <a href="${pageContext.request.contextPath}/student/details?studentId=<c:out value="${student.id}"/>">Details</a>
             </td>
         </tr>
     </c:forEach>
