@@ -15,7 +15,7 @@
 <body>
 <jsp:include page="/navigator.jsp"/>
 
-<form action="/grade/add" method="post">
+<form action='${pageContext.request.contextPath}/grade/add' method="post">
     <label for="studentId">Student id:</label>
     <input id="studentId" name="studentId" type="number"><br/>
 

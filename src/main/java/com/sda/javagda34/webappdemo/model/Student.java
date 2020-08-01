@@ -11,7 +11,7 @@ import java.util.Set;
 @Setter
 @ToString
 @Builder
-@EqualsAndHashCode(of = {"indexNumber"})
+@EqualsAndHashCode
 @AllArgsConstructor
 @NoArgsConstructor
 // POJO - Plain Old Java Object
@@ -34,6 +34,7 @@ public class Student {
 
     private boolean active;
 
-    @OneToMany(mappedBy = "student")
+    @OneToMany(mappedBy = "student", fetch = FetchType.EAGER)
+    @EqualsAndHashCode.Exclude
     private Set<Grade> gradeSet = new HashSet<>();
 }

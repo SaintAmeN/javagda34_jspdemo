@@ -1,9 +1,7 @@
 package com.sda.javagda34.webappdemo.model;
 
 import com.sun.xml.bind.v2.model.core.ID;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
@@ -19,6 +17,8 @@ public class Grade {
     private Long id;
 
     private double value; // wartość oceny
+
+    @Enumerated(value = EnumType.STRING)
     private GradeSubject subject;
 
     // data wystawienia
@@ -26,5 +26,7 @@ public class Grade {
     private LocalDate dateAdded; // now
 
     @ManyToOne()
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
     private Student student;
 }
