@@ -10,13 +10,36 @@
 <%@ page isELIgnored="false" %>
 <html>
 <head>
+    <jsp:include page="/headerLinks.jsp"></jsp:include>
     <title>Index page</title>
 </head>
-<body>
-<jsp:include page="/navigator.jsp"/>
-<%--<%--%>
-<%--    out.print(request.getAttribute("imie_do_wyswietlenia"));--%>
-<%--%>--%>
-<h1>Cześć ! <c:out value="${requestScope.imie_do_wyswietlenia}"/></h1>
+<body class="text-center">
+<div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+    <header class="masthead mb-auto">
+        <div class="inner">
+            <h3 class="masthead-brand">Cover</h3>
+            <nav class="nav nav-masthead justify-content-center">
+                <a class="nav-link active" href="#">Home</a>
+                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="#">Contact</a>
+            </nav>
+        </div>
+    </header>
+    <%--<jsp:include page="/navigator.jsp"/>--%>
+    <%--<%--%>
+    <%--    out.print(request.getAttribute("imie_do_wyswietlenia"));--%>
+    <%--%>--%>
+
+    <main role="main" class="inner cover">
+        <h1>Cześć ! <c:out value="${requestScope.imie_do_wyswietlenia}"/></h1>
+    </main>
+
+    <footer class="mastfoot mt-auto">
+        <div class="inner">
+            <p>Cover template for <a href="https://getbootstrap.com/">Bootstrap</a>, by <a href="https://twitter.com/mdo">@mdo</a>.</p>
+        </div>
+    </footer>
+</div>
+<jsp:include page="/footerLinks.jsp"></jsp:include>
 </body>
 </html>
